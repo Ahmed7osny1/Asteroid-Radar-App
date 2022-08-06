@@ -46,24 +46,25 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
     textView.text = String.format(context.getString(R.string.km_s_unit_format), number)
 }
 
-// Binding adapter used to hide the spinner once data is available
-
+/**
+ * Binding adapter used to hide the spinner once data is available
+ */
 @BindingAdapter("goneIfNotNull")
 fun goneIfNotNull(view: View, it: Any?) {
     view.visibility = if (it != null) View.GONE else View.VISIBLE
 }
 
-
- // Binding adapter used to display images from URL using Glide
-
+/**
+ * Binding adapter used to display images from URL using Glide
+ */
 @BindingAdapter("imageUrl")
 fun setImageUrl(imageView: ImageView, pic: PictureOfDay?) {
     if (pic != null)
         Picasso.get().load(pic.url).into(imageView)
 }
-
- // When there is no Asteroids data (data is null), hide the [RecyclerView], otherwise show it.
-
+/**
+ * When there is no Asteroids data (data is null), hide the [RecyclerView], otherwise show it.
+ */
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>?) {
     val adapter = recyclerView.adapter as MainAdapter
